@@ -9,9 +9,9 @@ export class CockpitComponent implements OnInit {
   //app component
   // onServerAdded(serverData: {serverName: string, serverContent: string})
   // () call the constructor of event Emitter
-  //output: make event listenable. make event out of component
+  //output: make event listenable from the outside. make event out of component
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
-  @Output() blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+  @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
   newServerName = '';
   newServerContent = '';
 
@@ -20,10 +20,10 @@ export class CockpitComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onAddServer() {
+  onAddServer(serverName: HTMLInputElement) {
     //emit a new event of <> type
     this.serverCreated.emit({
-      serverName: this.newServerName,
+      serverName: serverName.value,
       serverContent:this.newServerContent
     });
   }

@@ -1,10 +1,15 @@
 <div
-class="panel panel-default">
-<div class="panel-heading">{{ element.name }}</div>
-<div class="panel-body">
-  <p>
-    <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
-    <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
-  </p>
-</div>
+  class="panel panel-default">
+  <div class="panel-heading">{{ element.name }}</div>
+  <div class="panel-body">
+
+    <!-- set from outside component app component -->
+    <ng-content></ng-content>
+    <!-- it will find anything in the openning and closing tag  <app-server-element> in app.html -->
+
+    <!-- <p>
+      <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
+      <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
+    </p> -->
+  </div>
 </div>
